@@ -5,8 +5,8 @@ import random
 
 """
 Script to produce a random image.  Takes a directory as an argument and
-chooses a random image from it.  Copies that image to same path with the title
-of random and the same suffix as the source file.
+chooses a random image from it.  Copies that image to same path with the
+filename of random.jpg.
 """
 
 
@@ -18,7 +18,7 @@ def findImages(source):
     files = os.listdir(path)
     images = []
 
-    fileTypes = ['jpg', 'png', 'img', 'gif', 'jpeg', 'tiff', 'tff']
+    fileTypes = ['jpg', 'png', 'gif', 'jpeg', 'tiff', 'tff']
 
     for file in files:
         if file[-4] == '.':
@@ -27,15 +27,15 @@ def findImages(source):
         elif file[-5] == '.':
             if file[-4] in fileTypes:
                 images.append(file)
-        else:
-            print "No image files in source directory."
-            sys.exit(1)
+    if len(images) <= 0:
+        print "No image files in source directory."
+        sys.exit(1)
 
     return images
 
 def chooseImage(images):
     for img in images:
-        if img == 'random.img':
+        if img == 'random.jpg':
             images.pop(images.index(img))
     return random.choice(images)
 
@@ -60,7 +60,7 @@ def main():
 ##        elif image[-5] == '.':
 ##            copyName = 'random.' + image[-4:]
         print 'Copying.................'
-        shutil.copyfile((source + '/' + image), (source + '/' + 'random.img'))
+        shutil.copyfile((source + '/' + image), (source + '/' + 'random.jpg'))
 ##        print source + '/' + copyname
 
 if __name__ == "__main__":

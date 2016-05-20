@@ -2,11 +2,11 @@
 Test handle for the random image generator.
 
 Script should take in a given directory, choose a random image in that directory,
-and copy it as random.img.
+and copy it as random.jpg.
 
 Things to test:
-1) does it create random.img?
-2) if random.img already exists, does it get replaced with a new file?
+1) does it create random.jpg?
+2) if random.jpg already exists, does it get replaced with a new file?
 """
 
 import os
@@ -37,20 +37,20 @@ def checkFiles():
 
     
 def randomExist():
-    if os.path.exists('./Test/random.img') == False:
+    if os.path.exists('./Test/random.jpg') == False:
         return False
     else:
         return True
 
 
 """
-Test 1 - Does it create random.img?
+Test 1 - Does it create random.jpg?
 """
 def testCreateRandom():
     if os.name == 'nt':                     ##Quick OS check
-        cmd = 'del .\\Test\\random.img'
+        cmd = 'del .\\Test\\random.jpg'
     elif os.name == 'posix':
-        cmd = 'rm ./Test/random.img'
+        cmd = 'rm ./Test/random.jpg'
 
     if randomExist() == True:
         print 'random.img already exists, removing....'
@@ -59,10 +59,10 @@ def testCreateRandom():
     os.system('python randomImage.py --sourcedir ./Test/')
 
     if randomExist() == False:
-        print 'FAILURE - random.img not created!'
+        print 'FAILURE - random.jpg not created!'
         sys.exit(1)
     if randomExist() == True:
-        print 'OK - random.img created'
+        print 'OK - random.jpg created'
 
 
 
