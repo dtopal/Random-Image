@@ -55,13 +55,9 @@ def main():
     else:
         images = findImages(source)
         image = chooseImage(images)
-##        if image[-4] == '.':
-##            copyName = 'random.' + image[-3:]
-##        elif image[-5] == '.':
-##            copyName = 'random.' + image[-4:]
+        
         print 'Copying.................'
         shutil.copyfile((source + '/' + image), (source + '/' + 'random.jpg'))
-##        print source + '/' + copyname
 
 if __name__ == "__main__":
     main()
