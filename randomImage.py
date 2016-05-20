@@ -57,7 +57,14 @@ def main():
         image = chooseImage(images)
         
         print 'Copying.................'
-        shutil.copyfile((source + '/' + image), (source + '/' + 'random.jpg'))
+##        shutil.copyfile((source + '/' + image), (source + '/' + 'random.jpg'))
+
+        try:
+            shutil.copyfile((source + '/' + image), (source + '/' + 'random.jpg'))
+        except Error:
+            print 'source file and destination are the same'
+        except IOError:
+            print 'destination location is not writable'
 
 if __name__ == "__main__":
     main()

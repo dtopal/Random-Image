@@ -56,7 +56,13 @@ def testCreateRandom():
         print 'random.img already exists, removing....'
         os.system(cmd)
 
-    os.system('python randomImage.py --sourcedir ./Test/')
+    try:
+        os.system('python randomImage.py --sourcedir ./Test/')
+    except Error:
+        print 'source file and destination are the same'
+    except IOError:
+        print 'destination location is not writable'
+        
 
     if randomExist() == False:
         print 'FAILURE - random.jpg not created!'
