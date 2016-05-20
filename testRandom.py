@@ -34,19 +34,20 @@ def checkFiles():
         sys.exit(1)
     else:
         print 'Test images........ PRESENT'
-    
 
-"""
-Test 1 - Does it create random.img?
-"""
+    
 def randomExist():
     if os.path.exists('./Test/random.img') == False:
         return False
     else:
         return True
 
+
+"""
+Test 1 - Does it create random.img?
+"""
 def testCreateRandom():
-    if os.name == 'nt':
+    if os.name == 'nt':                     ##Quick OS check
         cmd = 'del .\\Test\\random.img'
     elif os.name == 'posix':
         cmd = 'rm ./Test/random.img'
@@ -60,7 +61,7 @@ def testCreateRandom():
     if randomExist() == False:
         print 'FAILURE - random.img not created!'
         sys.exit(1)
-    else:
+    if randomExist() == True:
         print 'OK - random.img created'
 
 
